@@ -1,43 +1,26 @@
-{
-  "root": true,
-  "parser": "@typescript-eslint/parser",
-  "parserOptions": {
-    "project": "./tsconfig.json",
-    "tsconfigRootDir": "./",
-    "ecmaVersion": 2020,
-    "sourceType": "module"
-  },
-  "extends": [
-    "eslint:recommended",
-    "plugin:@typescript-eslint/recommended",
-    "plugin:prettier/recommended"
-  ],
-  "plugins": [
-    "@typescript-eslint",
-    "prettier"
-  ],
-  "rules": {
-    "declaration-colon-newline-after": "off", // Turn off rule for newline after ":" in multi-line declarations
-    "function-no-unknown": "off", // Disable rule for unknown functions
-    "indentation": ["error", 2], // Ensure consistent 2-space indentation
-    "function-comma-newline-after": ["error", "always"], // Enforce newline after comma in multi-line functions
-    "declaration-block-semicolon-newline-after": ["error", "always"], // Enforce newline after ";" in multi-line declaration blocks
-    "no-eol-whitespace": "error", // Disallow trailing whitespace
-    "declaration-colon-space-after": ["error", "always"], // Enforce single space after ":" in single-line declarations
-    "color-function-notation": ["error", "modern"], // Enforce modern color function notation
-    "function-whitespace-after": ["error", "always"], // Enforce whitespace after ")" in functions
-    "prettier/prettier": [
-      "error",
-      {
-        "singleQuote": true,
-        "trailingComma": "es5",
-        "endOfLine": "auto"
-      }
-    ]
-  },
-  "ignorePatterns": [
-    "node_modules/",
-    "dist/",
-    "build/"
-  ]
-}
+# Super-Linter configuration file
+# For more details, visit https://nvuillam.github.io/super-linter/
+
+linters:
+  eslint:
+    lint_dir: "."
+    eslint_config_file: ".eslintrc.json"
+
+# Optional configuration
+filters:
+  skip:
+    - "node_modules"
+    - "dist"
+    - "build"
+    - ".github/workflows/lint.yml" # Skip linting the GitHub Actions workflow file
+
+# Disable linters that you don't need
+disabled_linters:
+  - "csslint" # Example: disable CSS linting
+  - "jscpd" # Example: disable duplicate code linting
+  - "actionlint" # Example: disable GitHub Actions linting
+  - "markdownlint" # Example: disable Markdown linting
+  - "ts-standard" # Example: disable TypeScript standard linting
+  - "jsonlint" # Example: disable JSON linting
+
+# Optional: customize linter settings if needed
