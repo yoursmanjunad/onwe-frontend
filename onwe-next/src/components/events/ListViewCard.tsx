@@ -21,7 +21,7 @@ const formatDate = (dateStr: string) => {
   return { day: formattedDay, month };
 };
 
-// eslint-disable-next-line react/display-name
+// next-line react/display-name
 const ListViewCard = React.forwardRef<HTMLDivElement, EventCardProps>(
   ({ title, subtitle, dateOfEvent, time, description, onClick }, ref) => {
     const { day, month } = formatDate(dateOfEvent);
