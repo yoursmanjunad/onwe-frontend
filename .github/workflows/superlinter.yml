@@ -1,17 +1,39 @@
+# .github/workflows/superlinter.yml
 name: Super-Linter
 
-on: push
+on: [push, pull_request]
 
 jobs:
   super-lint:
     name: Lint code base
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '14' # Set the Node.js version that matches your project
+
+      - name: Install dependencies
+        run: npm install # Install project dependencies if required
 
       - name: Run Super-Linter
         uses: github/super-linter@v4
         env:
           DEFAULT_BRANCH: main
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          linters: "eslint"
+          eslint: true
+          eslint_config_file: ".eslintrc.json" # Path to your ESLint config
+          eslint_extra_args: "--no-eslintrc" # Disabling built-in ESLint config to use your custom config
+
+      - name: Upload Linter Report
+        if: failure()
+        uses: actions/upload-artifact@v3
+        with:
+          name: linter-report
+          path: ./report.txt # Path to the lint report file if generated
