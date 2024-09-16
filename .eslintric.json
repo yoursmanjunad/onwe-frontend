@@ -1,0 +1,43 @@
+{
+  "root": true,
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "project": "./tsconfig.json",
+    "tsconfigRootDir": "./",
+    "ecmaVersion": 2020,
+    "sourceType": "module"
+  },
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:prettier/recommended"
+  ],
+  "plugins": [
+    "@typescript-eslint",
+    "prettier"
+  ],
+  "rules": {
+    "declaration-colon-newline-after": "off", // Turn off rule for newline after ":" in multi-line declarations
+    "function-no-unknown": "off", // Disable rule for unknown functions
+    "indentation": ["error", 2], // Ensure consistent 2-space indentation
+    "function-comma-newline-after": ["error", "always"], // Enforce newline after comma in multi-line functions
+    "declaration-block-semicolon-newline-after": ["error", "always"], // Enforce newline after ";" in multi-line declaration blocks
+    "no-eol-whitespace": "error", // Disallow trailing whitespace
+    "declaration-colon-space-after": ["error", "always"], // Enforce single space after ":" in single-line declarations
+    "color-function-notation": ["error", "modern"], // Enforce modern color function notation
+    "function-whitespace-after": ["error", "always"], // Enforce whitespace after ")" in functions
+    "prettier/prettier": [
+      "error",
+      {
+        "singleQuote": true,
+        "trailingComma": "es5",
+        "endOfLine": "auto"
+      }
+    ]
+  },
+  "ignorePatterns": [
+    "node_modules/",
+    "dist/",
+    "build/"
+  ]
+}
